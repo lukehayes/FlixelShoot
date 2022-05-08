@@ -4,11 +4,13 @@ import Player;
 import flixel.FlxG;
 import flixel.FlxState;
 import flixel.tile.FlxTile;
+import bullet.BasicBullet;
 
 class PlayState extends FlxState
 {
     var text   : flixel.text.FlxText;
     var player : Player;
+    var bullet : BasicBullet;
 
     override public function create()
     {
@@ -20,11 +22,15 @@ class PlayState extends FlxState
 
         this.player = new Player();
         add(this.player);
+
+        this.bullet = new BasicBullet();
+        add(this.bullet);
     }
 
     override public function update(elapsed:Float)
     {
         super.update(elapsed);
         player.update(elapsed);
+        bullet.update(elapsed);
     }
 }
