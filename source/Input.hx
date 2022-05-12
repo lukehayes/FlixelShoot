@@ -55,4 +55,17 @@ class Input
             return false;
         }
     }
+
+    static public function SHOOT() : Bool
+    {
+
+        if(FlxG.keys.justPressed.SPACE || FlxG.mouse.pressed)
+        {
+            return true;
+        }else 
+        {
+
+            return false;
+        }
+    }
 }
