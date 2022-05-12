@@ -1,6 +1,7 @@
 package;
 
 import flixel.FlxG;
+import flixel.math.FlxVelocity;
 import flixel.FlxState;
 import flixel.FlxSprite;
 import flixel.util.FlxColor;
@@ -19,6 +20,7 @@ class Player extends FlxSprite
         super(x,y);
         makeGraphic(16,16, FlxColor.BLUE);
         drag.x = drag.y = 600;
+        FlxVelocity.moveTowardsMouse(this);
     }
 
     public function setCameraFollow()
