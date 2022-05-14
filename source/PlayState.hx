@@ -23,17 +23,18 @@ class PlayState extends FlxState
     {
         super.create();
 
-        this.text = new flixel.text.FlxText(0, 0, 0, "...", 32);
+        this.text = new flixel.text.FlxText(0, 0, 0, "Btx", 32);
         this.text.screenCenter();
         add(this.text);
 
         this.player = new Player();
         add(this.player);
 
-        //this.bullet = new BasicBullet();
+        //this.bullet = new BasicBullet(10,10);
         //add(this.bullet);
 
         this.bullets = new FlxTypedGroup<BasicBullet>();
+        add(this.bullets);
     }
 
     override public function update(elapsed:Float)
@@ -42,7 +43,9 @@ class PlayState extends FlxState
 
         if(Input.SHOOT())
         {
-            var b = new BasicBullet(300,100);
+            var angle = Math.atan2(player.y - FlxG.mouse.y, player.x - FlxG.mouse.x);
+            var b = new BasicBullet(player.x, player.y);
+            b.angle = angle;
             bullets.add(b);
         }
 

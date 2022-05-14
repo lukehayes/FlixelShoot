@@ -7,7 +7,8 @@ import flixel.FlxSprite;
 
 class BasicBullet extends FlxSprite
 {
-    public var speed : Float = 100.0;
+    public var speed : Float = 1000.0;
+    //public var angle : Float = 0.0;
 
     public function new(x:Float, y:Float)
     {
@@ -16,12 +17,14 @@ class BasicBullet extends FlxSprite
         //this.accelerates = false;
         //this.xAcceleration = 1;
         //this.yAcceleration = 1;
-        makeGraphic(40,40, flixel.util.FlxColor.WHITE);
+        makeGraphic(4,4, flixel.util.FlxColor.WHITE);
     }
 
     override public function update(elapsed:Float)
     {
         super.update(elapsed);
-        trace("Basic Bullet Updating");
+        //trace("Basic Bullet Updating");
+        this.x -= (speed * Math.cos(angle)) * elapsed;
+        this.y -= (speed * Math.sin(angle)) * elapsed;
     }
 }
