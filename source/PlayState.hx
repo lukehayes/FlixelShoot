@@ -1,6 +1,7 @@
 package;
 
 import Player;
+import Enemy;
 import flixel.math.FlxVelocity;
 import flixel.FlxG;
 import flixel.FlxState;
@@ -18,6 +19,7 @@ class PlayState extends FlxState
     var weapon : BasicWeapon;
     var mouse  : FlxMouse;
     var bullets: FlxTypedGroup<BasicBullet>;
+    var enemies: FlxTypedGroup<Enemy>;
 
     override public function create()
     {
@@ -35,6 +37,18 @@ class PlayState extends FlxState
 
         this.bullets = new FlxTypedGroup<BasicBullet>();
         add(this.bullets);
+
+        this.enemies = new FlxTypedGroup<Enemy>();
+        var e = new Enemy(400,400);
+
+        for(i in 0...100)
+        {
+            var rx = Math.random() * 500;
+            var ry = Math.random() * 500;
+            var e = new Enemy(rx,ry);
+            this.enemies.add(e);
+        }
+        add(this.enemies);
     }
 
     override public function update(elapsed:Float)
@@ -48,6 +62,14 @@ class PlayState extends FlxState
             b.angle = angle;
             bullets.add(b);
         }
+
+        FlxG.overlap(this.bullets, this.enemies, function(b,s)
+                {
+                    s.kill();
+                    //FlxG.camera.shake(0.01,0.01);
+                    //FlxG.camera.flash();
+
+                });
 
         player.update(elapsed);
     }
