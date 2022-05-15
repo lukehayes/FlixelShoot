@@ -2,6 +2,7 @@ package;
 
 import Player;
 import Enemy;
+import Man;
 import flixel.math.FlxVelocity;
 import flixel.FlxG;
 import flixel.FlxState;
@@ -25,6 +26,7 @@ class PlayState extends FlxState
     var enemies    : FlxTypedGroup<Enemy>;
     var caShader   : ChromaticAberrationShader;
     var dialogeBox : DialogueBox;
+    var man        : Man;
 
     override public function create()
     {
@@ -53,6 +55,10 @@ class PlayState extends FlxState
         add(this.enemies);
 
         this.dialogeBox = new DialogueBox();
+        this.man = new Man(200,200);
+        add(this.man);
+
+
         FlxG.mouse.load("assets/images/Crosshair.png",4,-9,-9);
     }
 
