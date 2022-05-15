@@ -7,7 +7,8 @@ import flixel.FlxSprite;
 
 class BasicBullet extends FlxSprite
 {
-    public var speed : Float = 1000.0;
+    public var speed  : Float = 1000.0;
+    public var damage : Int = 1;
     //public var angle : Float = 0.0;
 
     public function new(x:Float, y:Float)

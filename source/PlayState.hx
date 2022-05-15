@@ -90,14 +90,17 @@ class PlayState extends FlxState
             }
         });
 
-        FlxG.overlap(this.bullets, this.enemies, function(b,s)
-                {
-                    s.kill();
-                    b.kill();
-                    //FlxG.camera.shake(0.01,0.01);
-                    //FlxG.camera.flash();
+        FlxG.overlap(this.bullets, this.enemies, function(b,e)
+        {
+            b.kill();
+            e.health -= b.damage;
 
-                });
+            if(e.health < 0)
+            {
+                e.kill();
+            }
+
+        });
 
         player.update(elapsed);
     }
