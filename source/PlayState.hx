@@ -60,7 +60,7 @@ class PlayState extends FlxState
         if(Input.SHOOT())
         {
             var angle = Math.atan2(player.y - FlxG.mouse.y, player.x - FlxG.mouse.x);
-            var b = new BasicBullet(player.x, player.y);
+            var b = new BasicBullet(player.x + 8, player.y + 8);
             b.angle = angle;
             bullets.add(b);
         }
