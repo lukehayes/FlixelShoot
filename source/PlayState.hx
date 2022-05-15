@@ -47,7 +47,7 @@ class PlayState extends FlxState
         {
             var rx = 100 + Math.random() * 500;
             var ry = 100 + Math.random() * 500;
-            var e = new Enemy(rx,ry);
+            var e = new enemy.FaceGhoul(rx,ry);
             this.enemies.add(e);
         }
         add(this.enemies);
