@@ -10,19 +10,21 @@ import bullet.BasicBullet;
 import weapon.BasicWeapon;
 import flixel.input.mouse.FlxMouse;
 import flixel.group.FlxGroup;
+import dialogue.DialogueBox;
 import shaders.ChromaticAbberationShader;
 
 
 class PlayState extends FlxState
 {
-    var text   : flixel.text.FlxText;
-    var player : Player;
-    var bullet : BasicBullet;
-    var weapon : BasicWeapon;
-    var mouse  : FlxMouse;
-    var bullets: FlxTypedGroup<BasicBullet>;
-    var enemies: FlxTypedGroup<Enemy>;
-    var caShader : ChromaticAberrationShader;
+    var text       : flixel.text.FlxText;
+    var player     : Player;
+    var bullet     : BasicBullet;
+    var weapon     : BasicWeapon;
+    var mouse      : FlxMouse;
+    var bullets    : FlxTypedGroup<BasicBullet>;
+    var enemies    : FlxTypedGroup<Enemy>;
+    var caShader   : ChromaticAberrationShader;
+    var dialogeBox : DialogueBox;
 
     override public function create()
     {
@@ -50,6 +52,7 @@ class PlayState extends FlxState
         }
         add(this.enemies);
 
+        this.dialogeBox = new DialogueBox();
         FlxG.mouse.load("assets/images/Crosshair.png",4,-9,-9);
     }
 
@@ -64,6 +67,22 @@ class PlayState extends FlxState
             b.angle = angle;
             bullets.add(b);
         }
+
+        FlxG.overlap(this.player, this.enemies, function(p,s)
+        {
+            if(Input.UP())
+            {
+                add(this.dialogeBox);
+            }
+        });
+
+        FlxG.overlap(this.player, this.enemies, function(p,s)
+        {
+            if(Input.DOWN())
+            {
+                remove(this.dialogeBox);
+            }
+        });
 
         FlxG.overlap(this.bullets, this.enemies, function(b,s)
                 {
