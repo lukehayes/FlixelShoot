@@ -32,14 +32,11 @@ class PlayState extends FlxState
         this.text.screenCenter();
         add(this.text);
 
-        this.player = new Player();
-        add(this.player);
-
-        //this.bullet = new BasicBullet(10,10);
-        //add(this.bullet);
-
         this.bullets = new FlxTypedGroup<BasicBullet>();
         add(this.bullets);
+
+        this.player = new Player();
+        add(this.player);
 
         this.enemies = new FlxTypedGroup<Enemy>();
         var e = new Enemy(400,400);
