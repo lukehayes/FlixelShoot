@@ -13,8 +13,7 @@ class Enemy extends FlxSprite
     public function new(x:Float, y:Float)
     {
         super(x,y);
-        trace("Enemy Created");
-        makeGraphic(20,20, flixel.util.FlxColor.RED);
+        makeGraphic(10,10, flixel.util.FlxColor.RED);
     }
 
     override public function update(elapsed:Float)

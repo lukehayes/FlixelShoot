@@ -13,7 +13,6 @@ class BasicBullet extends FlxSprite
     public function new(x:Float, y:Float)
     {
         super(x,y);
-        trace("Bullet Created");
         //this.accelerates = false;
         //this.xAcceleration = 1;
         //this.yAcceleration = 1;
