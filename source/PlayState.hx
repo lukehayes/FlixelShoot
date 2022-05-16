@@ -46,6 +46,7 @@ class PlayState extends FlxState
 
         this.dialogeBox = new DialogueBox();
         this.man = new Man(200,200);
+        this.man.animation.add("walk", [0,1], 3);
         add(this.man);
 
 
