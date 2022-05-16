@@ -69,7 +69,6 @@ class PlayState extends FlxState
         FlxG.overlap(this.bullets, this.enemies, function(b,e)
         {
             var damageString = "-" + b.damage;
-            trace(damageString);
             var damageText = new flixel.text.FlxText(e.x, e.y - 16,0, damageString, 16);
             damageText.color = flixel.util.FlxColor.fromRGB(220,50,35,255);
             add(damageText);
