@@ -17,8 +17,8 @@ class ManFactory extends Factory
 
         for(i in 0...amount)
         {
-            var x = Math.floor(Math.random() * 400);
-            var y = Math.floor(Math.random() * 400);
+            var x = 100 + Math.floor(Math.random() * 600);
+            var y = 100 + Math.floor(Math.random() * 600);
             trace("---");
             trace(x,y);
             trace("---");
