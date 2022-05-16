@@ -33,10 +33,10 @@ class Enemy extends FlxSprite
     override public function kill()
     {
         alive = false;
-        FlxTween.tween(this.damageText, {alpha: 0, y: y - 16}, 0.33, {ease: FlxEase.circOut, onComplete: null});
+        FlxTween.tween(this.damageText, {alpha: 0, y: y - 16}, 0.33, {ease: FlxEase.circOut, onComplete: this.finishKill});
     }
 
-    public function finishKill()
+    public function finishKill(_)
     {
         exists = false;
     }
