@@ -39,7 +39,7 @@ class PlayState extends FlxState
         this.enemies = new FlxTypedGroup<Enemy>();
         var e = new Enemy(400,400);
 
-        for(i in 0...100)
+        for(i in 0...10)
         {
             var rx = 100 + Math.random() * 500;
             var ry = 100 + Math.random() * 500;
