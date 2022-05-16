@@ -68,13 +68,7 @@ class PlayState extends FlxState
         FlxG.overlap(this.bullets, this.enemies, function(b,e)
         {
             b.kill();
-            e.health -= b.damage;
-
-            if(e.health < 0)
-            {
-                e.kill();
-            }
-
+            e.hurt(b.damage);
         });
 
         player.update(elapsed);
