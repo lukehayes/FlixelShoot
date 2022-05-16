@@ -7,7 +7,8 @@ class Man extends FlxSprite
     public function new(x,y)
     {
         super(x,y);
-        loadGraphic("assets/images/man.png", false, 32,32);
+        loadGraphic("assets/images/man.png", true, 16,16);
+        scale.set(3,3);
     }
 }
 
