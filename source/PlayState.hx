@@ -3,15 +3,12 @@ package;
 import Player;
 import Enemy;
 import Man;
-import flixel.math.FlxVelocity;
 import flixel.FlxG;
 import flixel.FlxState;
-import flixel.tile.FlxTile;
 import bullet.BasicBullet;
 import weapon.BasicWeapon;
 import flixel.input.mouse.FlxMouse;
 import flixel.group.FlxGroup;
-import dialogue.DialogueBox;
 
 
 class PlayState extends FlxState
@@ -23,7 +20,6 @@ class PlayState extends FlxState
     var mouse      : FlxMouse;
     var bullets    : FlxTypedGroup<BasicBullet>;
     var enemies    : FlxTypedGroup<Enemy>;
-    var dialogeBox : DialogueBox;
     var man        : Man;
 
     override public function create()
@@ -68,21 +64,6 @@ class PlayState extends FlxState
             bullets.add(b);
         }
 
-        FlxG.overlap(this.player, this.enemies, function(p,s)
-        {
-            if(Input.UP())
-            {
-                add(this.dialogeBox);
-            }
-        });
-
-        FlxG.overlap(this.player, this.enemies, function(p,s)
-        {
-            if(Input.DOWN())
-            {
-                remove(this.dialogeBox);
-            }
-        });
 
         FlxG.overlap(this.bullets, this.enemies, function(b,e)
         {
