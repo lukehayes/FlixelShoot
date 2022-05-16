@@ -30,10 +30,6 @@ class PlayState extends FlxState
     {
         super.create();
 
-        this.text = new flixel.text.FlxText(0, 0, 0, "Btx", 32);
-        this.text.screenCenter();
-        add(this.text);
-
         this.bullets = new FlxTypedGroup<BasicBullet>();
         add(this.bullets);
 
