@@ -9,7 +9,7 @@ import bullet.BasicBullet;
 import weapon.BasicWeapon;
 import flixel.input.mouse.FlxMouse;
 import flixel.group.FlxGroup;
-
+import factory.ManFactory;
 
 class PlayState extends FlxState
 {
@@ -21,10 +21,13 @@ class PlayState extends FlxState
     var bullets    : FlxTypedGroup<BasicBullet>;
     var enemies    : FlxTypedGroup<Enemy>;
     var man        : Man;
+    var factory    : FlxTypedGroup<Man>;
 
     override public function create()
     {
         super.create();
+
+        bgColor = flixel.util.FlxColor.GRAY;
 
         this.bullets = new FlxTypedGroup<BasicBullet>();
         add(this.bullets);
@@ -32,23 +35,12 @@ class PlayState extends FlxState
         this.player = new Player();
         add(this.player);
 
-        this.enemies = new FlxTypedGroup<Enemy>();
-        var e = new Enemy(400,400);
-
-        for(i in 0...10)
-        {
-            var rx = 100 + Math.random() * 500;
-            var ry = 100 + Math.random() * 500;
-            var e = new enemy.FaceGhoul(rx,ry);
-            this.enemies.add(e);
-        }
-        add(this.enemies);
-
-        this.dialogeBox = new DialogueBox();
         this.man = new Man(200,200);
         this.man.animation.add("walk", [0,1], 3);
         add(this.man);
 
+        this.factory = ManFactory.create(30);
+        add(this.factory);
 
         FlxG.mouse.load("assets/images/Crosshair.png",4,-9,-9);
     }
@@ -66,7 +58,7 @@ class PlayState extends FlxState
         }
 
 
-        FlxG.overlap(this.bullets, this.enemies, function(b,e)
+        FlxG.overlap(this.bullets, this.factory, function(b,e)
         {
             var damageString = "-" + b.damage;
             var damageText = new flixel.text.FlxText(e.x, e.y - 16,0, damageString, 16);
