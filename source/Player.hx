@@ -18,9 +18,10 @@ class Player extends FlxSprite
     public function new(x:Float = 100, y:Float = 100)
     {
         super(x,y);
-        makeGraphic(16,16, FlxColor.BLUE);
+        loadGraphic("assets/images/man.png", true, 16,16);
+        scale.set(2,2);
         drag.x = drag.y = 600;
-        FlxVelocity.moveTowardsMouse(this);
+        //FlxVelocity.moveTowardsMouse(this);
     }
 
     public function setCameraFollow()
