@@ -12,7 +12,6 @@ import weapon.BasicWeapon;
 import flixel.input.mouse.FlxMouse;
 import flixel.group.FlxGroup;
 import dialogue.DialogueBox;
-import shaders.ChromaticAbberationShader;
 
 
 class PlayState extends FlxState
@@ -24,7 +23,6 @@ class PlayState extends FlxState
     var mouse      : FlxMouse;
     var bullets    : FlxTypedGroup<BasicBullet>;
     var enemies    : FlxTypedGroup<Enemy>;
-    var caShader   : ChromaticAberrationShader;
     var dialogeBox : DialogueBox;
     var man        : Man;
 
