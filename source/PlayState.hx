@@ -35,9 +35,6 @@ class PlayState extends FlxState
         this.player = new Player();
         add(this.player);
 
-        this.man = new Man(200,200);
-        this.man.animation.add("walk", [0,1], 3);
-        add(this.man);
 
         this.factory = ManFactory.create(30);
         add(this.factory);
