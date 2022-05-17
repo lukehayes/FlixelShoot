@@ -19,8 +19,9 @@ class ZombieFactory extends Factory
         {
             var x = 100 + Math.floor(Math.random() * 600);
             var y = 100 + Math.floor(Math.random() * 600);
-            var m = new Zombie(x,y);
-            zombies.add(m);
+            var z = new Zombie(x,y);
+            z.animation.add("walk", [0,1], 3);
+            zombies.add(z);
         }
         return zombies;
     }
