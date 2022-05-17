@@ -5,7 +5,9 @@ import Enemy;
 import Man;
 import flixel.FlxG;
 import flixel.FlxState;
+import bullet.Bullet;
 import bullet.BasicBullet;
+import bullet.BigBullet;
 import weapon.BasicWeapon;
 import flixel.input.mouse.FlxMouse;
 import flixel.group.FlxGroup;
@@ -19,7 +21,7 @@ class PlayState extends FlxState
     var bullet     : BasicBullet;
     var weapon     : BasicWeapon;
     var mouse      : FlxMouse;
-    var bullets    : FlxTypedGroup<BasicBullet>;
+    var bullets    : FlxTypedGroup<BigBullet>;
     var enemies    : FlxTypedGroup<Enemy>;
     var man        : Man;
     var factory    : FlxTypedGroup<Zombie>;
@@ -30,7 +32,7 @@ class PlayState extends FlxState
 
         bgColor = flixel.util.FlxColor.GRAY;
 
-        this.bullets = new FlxTypedGroup<BasicBullet>();
+        this.bullets = new FlxTypedGroup<BigBullet>();
         add(this.bullets);
 
         this.player = new Player();
@@ -50,7 +52,7 @@ class PlayState extends FlxState
         if(Input.SHOOT())
         {
             var angle = Math.atan2(player.y - FlxG.mouse.y, player.x - FlxG.mouse.x);
-            var b = new BasicBullet(player.x + 8, player.y + 8);
+            var b = new BigBullet(player.x + 8, player.y + 8);
             b.angle = angle;
             bullets.add(b);
         }
