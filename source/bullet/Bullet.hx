@@ -1,0 +1,5 @@
+package bullet;
+
+class Bullet
+{
+}
