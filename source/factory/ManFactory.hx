@@ -19,9 +19,6 @@ class ManFactory extends Factory
         {
             var x = 100 + Math.floor(Math.random() * 600);
             var y = 100 + Math.floor(Math.random() * 600);
-            trace("---");
-            trace(x,y);
-            trace("---");
             var m = new Man(x,y);
             men.add(m);
         }
