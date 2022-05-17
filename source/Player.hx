@@ -22,6 +22,8 @@ class Player extends FlxSprite
         scale.set(2,2);
         drag.x = drag.y = 600;
         //FlxVelocity.moveTowardsMouse(this);
+        animation.add("walk", [0,1], 5);
+        animation.add("idle", [0]);
     }
 
     public function setCameraFollow()
@@ -51,6 +53,7 @@ class Player extends FlxSprite
 
         if(up||down||left||right)
         {
+            this.animation.play("walk");
             var newAngle:Float = 0;
             if (up)
             {
@@ -75,6 +78,9 @@ class Player extends FlxSprite
 
             velocity.set(SPEED, 0);
             velocity.rotate(FlxPoint.weak(0,0), newAngle);
+        }else 
+        {
+            this.animation.play("idle");
         }
 
     }
