@@ -40,6 +40,7 @@ class PlayState extends FlxState
 
         this.player = new Player();
         add(this.player);
+        FlxG.camera.follow(this.player, TOPDOWN);
 
 
         this.factory = ZombieFactory.create(30);
