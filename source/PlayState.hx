@@ -10,6 +10,7 @@ import weapon.BasicWeapon;
 import flixel.input.mouse.FlxMouse;
 import flixel.group.FlxGroup;
 import factory.ManFactory;
+import factory.ZombieFactory;
 
 class PlayState extends FlxState
 {
@@ -21,7 +22,7 @@ class PlayState extends FlxState
     var bullets    : FlxTypedGroup<BasicBullet>;
     var enemies    : FlxTypedGroup<Enemy>;
     var man        : Man;
-    var factory    : FlxTypedGroup<Man>;
+    var factory    : FlxTypedGroup<Zombie>;
 
     override public function create()
     {
@@ -36,7 +37,7 @@ class PlayState extends FlxState
         add(this.player);
 
 
-        this.factory = ManFactory.create(30);
+        this.factory = ZombieFactory.create(30);
         add(this.factory);
 
         FlxG.mouse.load("assets/images/Crosshair.png",4,-9,-9);
