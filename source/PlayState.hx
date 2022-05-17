@@ -32,6 +32,7 @@ class PlayState extends FlxState
     {
         super.create();
 
+        flixel.system.FlxAssets.FONT_DEFAULT = "assets/fonts/cozette_bitmap.ttf";
         bgColor = flixel.util.FlxColor.GRAY;
 
         this.bullets = new FlxTypedGroup<BigBullet>();
