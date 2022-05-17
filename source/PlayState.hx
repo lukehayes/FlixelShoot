@@ -13,6 +13,7 @@ import flixel.input.mouse.FlxMouse;
 import flixel.group.FlxGroup;
 import factory.ManFactory;
 import factory.ZombieFactory;
+import dialogue.DialogueBox;
 
 class PlayState extends FlxState
 {
@@ -25,6 +26,7 @@ class PlayState extends FlxState
     var enemies    : FlxTypedGroup<Enemy>;
     var man        : Man;
     var factory    : FlxTypedGroup<Zombie>;
+    var db         : DialogueBox;
 
     override public function create()
     {
