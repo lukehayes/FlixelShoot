@@ -16,7 +16,7 @@ or you can set the actual size of your file manually at "FlxPreloaderBase-onUpda
 <!-- ____________________________ Window Settings ___________________________ -->
 
 <!--These window settings apply to all targets-->
-<window width="320" height="180" fps="60" background="#000000" hardware="true" vsync="false" />
+<window width="320" height="240" fps="60" background="#000000" hardware="true" vsync="false" />
 
 <!--HTML5-specific-->
 <window if="html5" resizable="false" />
