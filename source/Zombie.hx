@@ -21,6 +21,8 @@ class Zombie extends FlxSprite
 
     override public function update(elapsed:Float)
     {
+        //this.x -= ((Math.random() * 100) * Math.cos(angle)) * elapsed;
+        //this.y -= ((Math.random() * 100) * Math.sin(angle)) * elapsed;
     }
 }
 
