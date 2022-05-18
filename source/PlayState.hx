@@ -14,6 +14,9 @@ import flixel.group.FlxGroup;
 import factory.ManFactory;
 import factory.ZombieFactory;
 import dialogue.DialogueBox;
+import interactable.Interactable;
+import interactable.Interactive;
+import interactable.Sign;
 
 class PlayState extends FlxState
 {
@@ -26,6 +29,7 @@ class PlayState extends FlxState
     var enemies    : FlxTypedGroup<Enemy>;
     var man        : Man;
     var factory    : FlxTypedGroup<Zombie>;
+    var interacts  : FlxTypedGroup<Interactive>;
     var db         : DialogueBox;
 
     override public function create()
@@ -46,12 +50,33 @@ class PlayState extends FlxState
         this.factory = ZombieFactory.create(30);
         add(this.factory);
 
+        this.interacts = new FlxTypedGroup<Interactive>();
+        var s1 = new Sign("A test sign");
+        s1.x = Math.random() * 300;
+        s1.y = Math.random() * 300;
+        var s2 = new Sign("HI");
+        s2.x = Math.random() * 300;
+        s2.y = Math.random() * 300;
+        var s3 = new Sign("Damn this is a lovely sign");
+        s3.x = Math.random() * 300;
+        s3.y = Math.random() * 300;
+        this.interacts.add(s1);
+        this.interacts.add(s2);
+        this.interacts.add(s3);
+        this.add(interacts);
+
         FlxG.mouse.load("assets/images/Crosshair.png",4,-9,-9);
     }
 
     override public function update(elapsed:Float)
     {
         super.update(elapsed);
+
+        FlxG.overlap(this.player, this.interacts, function(p,s){
+            
+            if(Input.UP())
+                s.interact();
+        });
 
         if(Input.SHOOT())
         {
