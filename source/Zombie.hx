@@ -6,6 +6,7 @@ import flixel.FlxSprite;
 class Zombie extends FlxSprite
 {
     public var shadow : Shadow;
+    public var speed : Int = 100;
 
     public function new(x,y)
     {
@@ -21,8 +22,8 @@ class Zombie extends FlxSprite
 
     override public function update(elapsed:Float)
     {
-        //this.x -= ((Math.random() * 100) * Math.cos(angle)) * elapsed;
-        //this.y -= ((Math.random() * 100) * Math.sin(angle)) * elapsed;
+        this.x += speed * Math.cos(angle) * elapsed;
+        this.y += speed * Math.sin(angle) * elapsed;
     }
 }
 
