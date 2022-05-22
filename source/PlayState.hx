@@ -86,10 +86,11 @@ class PlayState extends FlxState
             bullets.add(b);
         }
 
-        for(z in this.factory)
+        this.factory.forEachAlive(function(z)
         {
             z.angle = Math.atan2(this.player.y - z.y, this.player.x - z.x);
-        }
+        });
+
 
         FlxG.overlap(this.bullets, this.factory, function(b,e)
         {
