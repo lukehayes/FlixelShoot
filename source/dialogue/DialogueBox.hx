@@ -9,7 +9,7 @@ class DialogueBox extends FlxSprite
 {
     public var text    : FlxText;
 
-    public function new()
+    public function new(text:String)
     {
         super();
         trace("Dialogue Box Created");
@@ -17,7 +17,7 @@ class DialogueBox extends FlxSprite
         makeGraphic(flixel.FlxG.width,100, FlxColor.BLACK);
         //y = flixel.FlxG.height - 10;
 
-        this.text = new FlxText("I am the dialogue box!", 21);
+        this.text = new FlxText(text, 31);
         this.text.screenCenter();
         //this.text.y = this.graphic.y - 50;
         //add(this.text);
