@@ -92,17 +92,20 @@ class PlayState extends FlxState
         });
 
 
-        FlxG.overlap(this.bullets, this.factory, function(b,e)
-        {
-            var damageString = "-" + b.damage;
-            var damageText = new flixel.text.FlxText(e.x, e.y - 16,0, damageString, 16);
-            damageText.color = flixel.util.FlxColor.fromRGB(220,50,35,255);
-            add(damageText);
-            flixel.tweens.FlxTween.tween(damageText, {alpha: 0, y: e.y - 64}, 2, {ease: flixel.tweens.FlxEase.circOut});
-            b.kill();
-            e.hurt(b.damage);
-        });
+        FlxG.overlap(this.bullets, this.factory, this.bulletEnemyCollision);
 
         player.update(elapsed);
+    }
+
+
+    private function bulletEnemyCollision(b, e)
+    {
+        var damageString = "-" + b.damage;
+        var damageText = new flixel.text.FlxText(e.x, e.y - 16,0, damageString, 16);
+        damageText.color = flixel.util.FlxColor.fromRGB(220,50,35,255);
+        add(damageText);
+        flixel.tweens.FlxTween.tween(damageText, {alpha: 0, y: e.y - 64}, 2, {ease: flixel.tweens.FlxEase.circOut});
+        b.kill();
+        e.hurt(b.damage);
     }
 }
