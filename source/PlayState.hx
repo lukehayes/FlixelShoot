@@ -73,9 +73,7 @@ class PlayState extends FlxState
         super.update(elapsed);
 
         FlxG.overlap(this.player, this.interacts, function(p,s){
-            
-            if(Input.UP())
-                s.interact();
+                s.interact(this);
         });
 
         if(Input.SHOOT())
@@ -91,9 +89,7 @@ class PlayState extends FlxState
             z.angle = Math.atan2(this.player.y - z.y, this.player.x - z.x);
         });
 
-
         FlxG.overlap(this.bullets, this.factory, this.bulletEnemyCollision);
-
         player.update(elapsed);
     }
 

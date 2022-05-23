@@ -5,12 +5,8 @@ import flixel.math.FlxAngle;
 import flixel.util.FlxColor;
 import flixel.FlxSprite;
 
-class BigBullet extends FlxSprite
+class BigBullet extends BasicBullet
 {
-    public var speed  : Float = 1000.0;
-    public var damage : Int = 3;
-    //public var angle : Float = 0.0;
-
     public function new(x:Float, y:Float)
     {
         super(x,y);
@@ -18,6 +14,7 @@ class BigBullet extends FlxSprite
         //this.xAcceleration = 1;
         //this.yAcceleration = 1;
         makeGraphic(8,8, flixel.util.FlxColor.PURPLE);
+        damage = 3;
     }
 
     override public function update(elapsed:Float)
@@ -26,5 +23,7 @@ class BigBullet extends FlxSprite
         //trace("Basic Bullet Updating");
         this.x -= (speed * Math.cos(angle)) * elapsed;
         this.y -= (speed * Math.sin(angle)) * elapsed;
+
+        updateLifetime(elapsed);
     }
 }

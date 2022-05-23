@@ -9,6 +9,8 @@ class BasicBullet extends FlxSprite
 {
     public var speed  : Float = 1000.0;
     public var damage : Int = 1;
+    public var lifetime  : Float = 0.3;
+    public var lifeTimer : Float = 0.0;
     //public var angle : Float = 0.0;
 
     public function new(x:Float, y:Float)
@@ -26,5 +28,18 @@ class BasicBullet extends FlxSprite
         //trace("Basic Bullet Updating");
         this.x -= (speed * Math.cos(angle)) * elapsed;
         this.y -= (speed * Math.sin(angle)) * elapsed;
+
+        updateLifetime(elapsed);
+        //trace(this.updateLifetime(elapsed));
+    }
+
+    public function updateLifetime(elapsed: Float)
+    {
+        this.lifeTimer += elapsed;
+
+        if(this.lifeTimer >= lifetime)
+        {
+            this.kill();
+        }
     }
 }
