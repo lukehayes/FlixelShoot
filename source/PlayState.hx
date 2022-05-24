@@ -17,6 +17,7 @@ import dialogue.DialogueBox;
 import interactable.Interactable;
 import interactable.Interactive;
 import interactable.Sign;
+import HUD;
 
 class PlayState extends FlxState
 {
@@ -31,6 +32,7 @@ class PlayState extends FlxState
     var factory    : FlxTypedGroup<Zombie>;
     var interacts  : FlxTypedGroup<Interactive>;
     var db         : DialogueBox;
+    var hud        : HUD;
 
     override public function create()
     {
@@ -64,6 +66,9 @@ class PlayState extends FlxState
         this.interacts.add(s2);
         this.interacts.add(s3);
         this.add(interacts);
+        this.hud = new HUD();
+        this.hud.zombieCount = this.factory.length;
+        add(this.hud);
 
         FlxG.mouse.load("assets/images/Crosshair.png",4,-9,-9);
     }
